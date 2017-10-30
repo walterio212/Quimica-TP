@@ -1,4 +1,11 @@
 from visual import *
+from random import randint
+
+def crearParticulas(particulasLista, cantidadACrear, centroPared, velMaxAbsoluta):
+    for x in xrange(cantidadParticulas):
+        nuevaParticula = sphere(pos = (randint(-centroPared, centroPared), randint(-centroPared, centroPared), randint(-centroPared, centroPared)), radius = 0.2, color = color.cyan)
+        nuevaParticula.velocity = vector(randint(-velMaxAbsoluta, velMaxAbsoluta), randint(-velMaxAbsoluta, velMaxAbsoluta), randint(-velMaxAbsoluta, velMaxAbsoluta))
+        particulasLista.append(nuevaParticula)
 
 def particulasEnMismaPosicion(particula1, particula2):
     return particula1.pos.x == particula2.pos.x and particula1.pos.y == particula2.pos.y and particula1.pos.z == particula2.pos.z
@@ -34,19 +41,11 @@ paredInf = box(pos = (0, -centroPared, 0), size = (tamanio, 0.2, tamanio), color
 paredTrasera = box(pos = (0, 0, -centroPared), size = (tamanio, tamanio, 0.2), color = color.green, opacity = 0.2)
 paredFrontal = box(pos = (0, 0, centroPared), size = (tamanio, tamanio, 0.2), color = color.green, opacity = 0.01)
 
-particula1 = sphere(pos = (-5, 0, 0), radius = 0.2, color = color.cyan)
-particula2 = sphere(pos = (-2, 0, 0), radius = 0.2, color = color.cyan)
-particula3 = sphere(pos = (1, 0, 0), radius = 0.2, color = color.cyan)
-particula4 = sphere(pos = (4, 0, 0), radius = 0.2, color = color.red)
-particula5 = sphere(pos = (-4, 0, 0), radius = 0.2, color = color.red)
+cantidadParticulas = 5
 
-particulas = [particula1, particula2, particula3, particula4, particula5]
+particulas = []
 
-particula1.velocity = vector(25, 4, -6)
-particula2.velocity = vector(2, 14, -6)
-particula3.velocity = vector(5, -4, 3)
-particula4.velocity = vector(15, -24, 1)
-particula5.velocity = vector(-15, 24, -1)
+crearParticulas(particulas, cantidadParticulas, centroPared, 25)
 
 deltaT = 0.005
 t = 0
