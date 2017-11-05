@@ -162,6 +162,8 @@ escala = 0.1
 
 temperaturaPrevia = s1.GetValue()
 
+P1 = (0.082 * 10 * 70) / 10
+
 
 while True:
     rate(100)
@@ -170,7 +172,7 @@ while True:
     
 #RV FALTA CALCULO DE PRESION...
 
-    valorPresion.SetLabel(str(temperatura + 100) + ' ATM')
+    valorPresion.SetLabel(str((P1*temperatura)/70) + ' ATM')
     valorTemperaturaC.SetLabel(str(temperatura - 273.15))
 
 #
